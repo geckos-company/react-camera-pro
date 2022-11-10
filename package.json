@@ -54,7 +54,7 @@
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
     "build-watch": "rollup -c -w --bundleConfigAsCjs",
-    "prepublishOnly": "npm run build",
+    "prepare": "npm run build",
     "start-example": "cd example && npm start",
     "deploy-example": "cd example && npm run deploy",
     "dev": "concurrently --kill-others \"npm run build-watch\" \"npm run start-example\"",
