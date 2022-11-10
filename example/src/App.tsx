@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-import { Camera, CameraType } from './Camera';
+import { Camera, CameraType } from 'react-camera-pro';
 
 const Wrapper = styled.div`
   position: fixed;

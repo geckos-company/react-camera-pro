@@ -2,19 +2,19 @@
 import React, { useRef, useState, useEffect, useImperativeHandle } from 'react';
 import styled from 'styled-components';
 
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
+/******************************************************************************
+Copyright (c) Microsoft Corporation.
 
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
 
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 
 function __makeTemplateObject(cooked, raw) {
@@ -23,12 +23,11 @@ function __makeTemplateObject(cooked, raw) {
 }
 
 var Wrapper = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n"], ["\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n"])));
-var Container = styled.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 100%;\n  ", "\n"], ["\n  width: 100%;\n  ",
-    "\n"])), function (_a) {
+var Container = styled.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: 100%;\n  ", "\n"], ["\n  width: 100%;\n  ", "\n"])), function (_a) {
     var aspectRatio = _a.aspectRatio;
     return aspectRatio === 'cover'
         ? "\n    position: absolute;\n    bottom: 0;\n    top: 0;\n    left: 0;\n    right: 0;"
-        : "\n    position: relative;\n    padding-bottom: " + 100 / aspectRatio + "%;";
+        : "\n    position: relative;\n    padding-bottom: ".concat(100 / aspectRatio, "%;");
 });
 var ErrorMsg = styled.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  padding: 40px;\n"], ["\n  padding: 40px;\n"])));
 var Cam = styled.video(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  z-index: 0;\n  transform: rotateY(", ");\n"], ["\n  width: 100%;\n  height: 100%;\n  object-fit: cover;\n  z-index: 0;\n  transform: rotateY(", ");\n"])), function (_a) {
@@ -58,16 +57,16 @@ var Camera = React.forwardRef(function (_a, ref) {
     }, [numberOfCameras]);
     useImperativeHandle(ref, function () { return ({
         takePhoto: function () {
-            var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+            var _a, _b, _c, _d;
             if (numberOfCameras < 1) {
                 throw new Error(errorMessages.noCameraAccessible);
             }
-            if ((_a = canvas) === null || _a === void 0 ? void 0 : _a.current) {
-                var playerWidth = ((_c = (_b = player) === null || _b === void 0 ? void 0 : _b.current) === null || _c === void 0 ? void 0 : _c.videoWidth) || 1280;
-                var playerHeight = ((_e = (_d = player) === null || _d === void 0 ? void 0 : _d.current) === null || _e === void 0 ? void 0 : _e.videoHeight) || 720;
+            if (canvas === null || canvas === void 0 ? void 0 : canvas.current) {
+                var playerWidth = ((_a = player === null || player === void 0 ? void 0 : player.current) === null || _a === void 0 ? void 0 : _a.videoWidth) || 1280;
+                var playerHeight = ((_b = player === null || player === void 0 ? void 0 : player.current) === null || _b === void 0 ? void 0 : _b.videoHeight) || 720;
                 var playerAR = playerWidth / playerHeight;
-                var canvasWidth = ((_g = (_f = container) === null || _f === void 0 ? void 0 : _f.current) === null || _g === void 0 ? void 0 : _g.offsetWidth) || 1280;
-                var canvasHeight = ((_j = (_h = container) === null || _h === void 0 ? void 0 : _h.current) === null || _j === void 0 ? void 0 : _j.offsetHeight) || 1280;
+                var canvasWidth = ((_c = container === null || container === void 0 ? void 0 : container.current) === null || _c === void 0 ? void 0 : _c.offsetWidth) || 1280;
+                var canvasHeight = ((_d = container === null || container === void 0 ? void 0 : container.current) === null || _d === void 0 ? void 0 : _d.offsetHeight) || 1280;
                 var canvasAR = canvasWidth / canvasHeight;
                 var sX = void 0, sY = void 0, sW = void 0, sH = void 0;
                 if (playerAR > canvasAR) {
@@ -85,7 +84,7 @@ var Camera = React.forwardRef(function (_a, ref) {
                 canvas.current.width = sW;
                 canvas.current.height = sH;
                 var context = canvas.current.getContext('2d');
-                if (context && ((_k = player) === null || _k === void 0 ? void 0 : _k.current)) {
+                if (context && (player === null || player === void 0 ? void 0 : player.current)) {
                     context.drawImage(player.current, sX, sY, sW, sH, 0, 0, sW, sH);
                 }
                 var imgData = canvas.current.toDataURL('image/jpeg');
@@ -134,7 +133,7 @@ var Camera = React.forwardRef(function (_a, ref) {
 });
 Camera.displayName = 'Camera';
 var initCameraStream = function (stream, setStream, currentFacingMode, videoSourceDeviceId, setNumberOfCameras, setNotSupported, setPermissionDenied) {
-    var _a, _b;
+    var _a;
     // stop any active streams in the window
     if (stream) {
         stream.getTracks().forEach(function (track) {
@@ -150,7 +149,7 @@ var initCameraStream = function (stream, setStream, currentFacingMode, videoSour
             height: { ideal: 1920 },
         },
     };
-    if ((_b = (_a = navigator) === null || _a === void 0 ? void 0 : _a.mediaDevices) === null || _b === void 0 ? void 0 : _b.getUserMedia) {
+    if ((_a = navigator === null || navigator === void 0 ? void 0 : navigator.mediaDevices) === null || _a === void 0 ? void 0 : _a.getUserMedia) {
         navigator.mediaDevices
             .getUserMedia(constraints)
             .then(function (stream) {

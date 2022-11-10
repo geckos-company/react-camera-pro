@@ -1,0 +1,1 @@
+import { CameraType, CameraProps } from './components/Camera/types';
