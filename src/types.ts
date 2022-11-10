@@ -1,1 +1,1 @@
-import { CameraType, CameraProps } from './components/Camera/types';
+export { CameraType, CameraProps } from './components/Camera/types';
